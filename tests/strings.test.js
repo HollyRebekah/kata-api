@@ -1,24 +1,35 @@
 describe('/strings', () => {
   describe('GET /hello/{string}', () => {
-    xit('returns "Hello world!" when passed "world"', (done) => {
+    it('returns "Hello world!" when passed "world"', (done) => {
       chai.request(server)
         .get('/strings/hello/world')
         .end((err, res) => {
           expect(err).to.equal(null);
           expect(res.status).to.equal(200);
-          expect(res.body).to.eql({ result: 'Hello world!' });
+          expect(res.body).to.eql({ result: 'Hello, world!' });
+          done();
+        });
+    });
+
+    it('returns "Hello, turtle!" when passed "turtle"', (done) => {
+      chai.request(server)
+        .get('/strings/hello/turtle')
+        .end((err, res) => {
+          expect(err).to.equal(null);
+          expect(res.status).to.equal(200);
+          expect(res.body).to.eql({ result: 'Hello, turtle!' });
           done();
         });
     });
   });
 
   describe('GET /upper/{string}', () => {
-    xit('returns the uppercased string', (done) => {
+    it('returns the uppercased string', (done) => {
       chai.request(server)
         .get('/strings/upper/hello')
         .end((err, res) => {
           expect(err).to.equal(null);
-          expect(res.status).to.equal(200);
+          //expect(res.status).to.equal(200);
           expect(res.body).to.eql({ result: 'HELLO' });
           done();
         });
