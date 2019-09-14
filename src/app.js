@@ -1,37 +1,15 @@
 const express = require('express');
-const strings = require('./lib/strings');
 const numbers = require('./lib/numbers');
+const stringsRouter = require('./routes/strings');
 
 const app = express();
+
 app.use(express.json());
+app.use('/strings', stringsRouter);
+
 const isNumeric = (string) => {
   return !Number.isNaN(parseInt(string));
 };
-
-app.get('/strings/hello/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.sayHello(param) });
-});
-
-app.get('/strings/upper/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.uppercase(param) });
-});
-
-app.get('/strings/lower/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.lowercase(param) });
-});
-
-app.get('/strings/first-characters/hello', (req, res) => {
-  res.json({ result: strings.firstCharacter('hello') });
-});
-
-app.get('/strings/first-characters/:word', (req, res) => {
-  const param = req.params.word;
-  const query = req.query.length;
-  res.json({ result: strings.firstCharacters(param, query) });
-});
 
 app.get('/numbers/add/:a/and/:b', (req, res) => {
   if (isNumeric(req.params.a) && isNumeric(req.params.b)) {
