@@ -1,9 +1,9 @@
 const add = (a, b) => {
-  return a + b
+  return a + b;
 };
 
 const subtract = (a, b) => {
-  return a - b
+  return a - b;
 };
 
 const multiply = (a, b) => {
@@ -27,19 +27,19 @@ const roundUp = (a) => {
 };
 
 const roundDown = (a) => {
-  return Math.floor(a)
+  return Math.floor(a);
 };
 
 const absolute = (a) => {
-  return Math.abs(a)
+  return Math.abs(a);
 };
 
 const quotient = (a, b) => {
-  return Math.trunc(a/b)
+  return Math.trunc(a / b);
 };
 
 const remainder = (a, b) => {
-  return a % b
+  return a % b;
 };
 
 module.exports = {
