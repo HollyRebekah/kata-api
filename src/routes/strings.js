@@ -1,32 +1,16 @@
 const express = require('express');
-const strings = require('../lib/strings');
+const stringsController = require('../controller/strings');
 
 const router = express.Router();
 
-router.get('/hello/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.sayHello(param) });
-});
+router.get('/hello/:word', stringsController.hello);
 
-router.get('/upper/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.uppercase(param) });
-});
+router.get('/upper/:word', stringsController.uppercase);
 
-router.get('/lower/:word', (req, res) => {
-  const param = req.params.word;
-  res.json({ result: strings.lowercase(param) });
-});
+router.get('/lower/:word', stringsController.lowercase);
 
+router.get('/first-characters/hello', stringsController.firstCharacter);
 
-router.get('/first-characters/hello', (req, res) => {
-  res.json({ result: strings.firstCharacter('hello') });
-});
-
-router.get('/first-characters/:word', (req, res) => {
-  const param = req.params.word;
-  const query = req.query.length;
-  res.json({ result: strings.firstCharacters(param, query) });
-});
+router.get('/first-characters/:word', stringsController.firstCharacters);
 
 module.exports = router;
